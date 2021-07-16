@@ -1,17 +1,5 @@
 ---
 
-- name: Get root token
-  become: true
-  become_user: ubuntu
-  slurp:
-    src: "/tmp/{{ vault_keysfile }}"
-  register: token_file
-  no_log: true
-
-- name: get json data
-  set_fact:
-    json_data: "{{ token_file['content'] | b64decode }}"
-
 - name: save root token variable
   set_fact:
     root_token: "{{ json_data.root_token }}"
