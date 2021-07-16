@@ -56,7 +56,7 @@
     method: POST
     headers:
       X-Vault-Token: "{{ root_token }}"
-    body: "{{ lookup('file','transform_creditcard.json') }}"
+    body: "{{ lookup('file','transformation_creditcard.json') }}"
     body_format: json
     status_code:
       - 200
@@ -74,18 +74,6 @@
       - 200
       - 204
 
-- name: create driverslicense template
-  uri:
-    url: "http://127.0.0.1:{{ vault_port }}/transform/template/driverslicense-template"
-    method: POST
-    headers:
-      X-Vault-Token: "{{ root_token }}"
-    body: "{{ lookup('file','transformation_driverslicensetemplate.json') }}"
-    body_format: json
-    status_code:
-      - 200
-      - 204
-
 - name: create transformation driverslicense
   uri:
     url: "http://127.0.0.1:{{ vault_port }}/v1/transform/transformations/fpe/driverslicense"
@@ -98,3 +86,18 @@
       - 200
       - 204
 
+
+- name: create driverslicense template
+  ansible.builtin.uri:
+    url: "http://127.0.0.1:{{ vault_port }}/transform/template/driverslicense-template"
+    method: POST
+    headers:
+      X-Vault-Token: "{{ root_token }}"
+    body:
+      type: regex
+      pattern: "(\\d{10})"
+      alphabet: builtin/alphanumericupper
+    body_format: json
+    status_code:
+      - 200
+      - 204
