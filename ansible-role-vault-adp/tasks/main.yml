@@ -52,7 +52,7 @@
 
 - name: create transformation creditcardnumber
   uri:
-    url: "http://127.0.0.1:{{ vault_port }}/v1/transform/transformation/fpe/creditcardnumber"
+    url: "http://127.0.0.1:{{ vault_port }}/v1/transform/transformations/fpe/creditcardnumber"
     method: POST
     headers:
       X-Vault-Token: "{{ root_token }}"
@@ -64,23 +64,11 @@
 
 - name: create transformation socialsecuritynumber
   uri:
-    url: "http://127.0.0.1:{{ vault_port }}/v1/transform/transformation/fpe/socialsecuritynumber"
+    url: "http://127.0.0.1:{{ vault_port }}/v1/transform/transformations/fpe/socialsecuritynumber"
     method: POST
     headers:
       X-Vault-Token: "{{ root_token }}"
     body: "{{ lookup('file','transformation_socialsecurity.json') }}"
-    body_format: json
-    status_code:
-      - 200
-      - 204
-
-- name: create transformation driverslicense
-  uri:
-    url: "http://127.0.0.1:{{ vault_port }}/v1/transform/transformation/fpe/driverslicense"
-    method: POST
-    headers:
-      X-Vault-Token: "{{ root_token }}"
-    body: "{{ lookup('file','transformation_driverslicense.json') }}"
     body_format: json
     status_code:
       - 200
@@ -92,8 +80,21 @@
     method: POST
     headers:
       X-Vault-Token: "{{ root_token }}"
-    body: "{{ lookup('file','transformation_driverslicense_template.json') }}"
+    body: "{{ lookup('file','transformation_driverslicensetemplate.json') }}"
     body_format: json
     status_code:
       - 200
       - 204
+
+- name: create transformation driverslicense
+  uri:
+    url: "http://127.0.0.1:{{ vault_port }}/v1/transform/transformations/fpe/driverslicense"
+    method: POST
+    headers:
+      X-Vault-Token: "{{ root_token }}"
+    body: "{{ lookup('file','transformation_driverslicense.json') }}"
+    body_format: json
+    status_code:
+      - 200
+      - 204
+
