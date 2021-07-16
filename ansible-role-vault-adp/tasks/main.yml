@@ -88,8 +88,8 @@
 
 
 - name: create driverslicense template
-  ansible.builtin.uri:
-    url: "http://127.0.0.1:{{ vault_port }}/transform/template/driverslicense-template"
+  uri:
+    url: "http://127.0.0.1:{{ vault_port }}/v1/transform/template/driverslicense-template"
     method: POST
     headers:
       X-Vault-Token: "{{ root_token }}"
