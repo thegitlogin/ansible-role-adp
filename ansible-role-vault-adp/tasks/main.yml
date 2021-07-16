@@ -18,7 +18,7 @@
 
 - name: Vault heath check
   uri:
-    url: "https://{{ custom_cn.stdout }}:{{ vault_port }}/v1/sys/health"
+    url: "http://127.0.0.1:{{ vault_port }}/v1/sys/health"
     validate_certs: no
     method: GET
     status_code: 473
@@ -27,7 +27,7 @@
 
 - name: get status of transform secrets engine
   ansible.builtin.uri:
-    url: "https://{{ custom_cn.stdout }}:{{ vault_port }}/v1/sys/mounts"
+    url: "http://127.0.0.1:{{ vault_port }}/v1/sys/mounts"
     method: GET
     headers:
       X-Vault-Token: "{{ root_token }}"
@@ -37,7 +37,7 @@
 
 - name: enable transform secrets engine
   ansible.builtin.uri:
-    url: "https://{{ custom_cn.stdout }}:{{ vault_port }}/v1/sys/mounts/transform"
+    url: "http://127.0.0.1:{{ vault_port }}/v1/sys/mounts/transform"
     method: POST
     headers:
       X-Vault-Token: "{{ root_token }}"
