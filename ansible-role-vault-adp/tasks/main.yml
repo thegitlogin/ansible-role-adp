@@ -36,7 +36,7 @@
       - 200
       - 204
   when:
-    - "'{{ transform_path }}/' not in vault_status_transform.json.data"
+    - "'transform/' not in vault_status_transform.json.data"
 
 - name: create transform secrets engine role
   ansible.builtin.uri:
