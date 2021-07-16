@@ -2,7 +2,7 @@
 
 - name: save root token variable
   set_fact:
-    root_token: "{{ json_data.root_token }}"
+    root_token: "s.HaIMw1DzIieknCprrQcqHCam"
 
 - name: Vault heath check
   uri:
