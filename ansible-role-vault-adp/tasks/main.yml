@@ -9,7 +9,7 @@
     url: "http://127.0.0.1:{{ vault_port }}/v1/sys/health"
     validate_certs: no
     method: GET
-    status_code: 473
+    status_code: 200
   retries: 10
   delay: 5
 
