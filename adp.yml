@@ -1,0 +1,10 @@
+- hosts: localhost
+  become: yes
+  become_user: root
+  roles:
+
+#    - name: Enable ADP Transform
+#      role: ansible-role-vault-adp
+
+
+
