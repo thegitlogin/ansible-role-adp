@@ -3,8 +3,5 @@
   become_user: root
   roles:
 
-#    - name: Enable ADP Transform
-#      role: ansible-role-vault-adp
-
-
-
+    - name: Enable ADP Transform
+      role: ansible-role-vault-adp
