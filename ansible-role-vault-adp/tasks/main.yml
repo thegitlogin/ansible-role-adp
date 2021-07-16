@@ -93,10 +93,7 @@
     method: POST
     headers:
       X-Vault-Token: "{{ root_token }}"
-    body:
-      type: regex
-      pattern: "(\\d{10})"
-      alphabet: builtin/alphanumericupper
+    body: "{{ lookup('file','transformation_driverslicense.json') }}"
     body_format: json
     status_code:
       - 200
