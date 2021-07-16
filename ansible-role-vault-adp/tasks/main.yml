@@ -14,7 +14,7 @@
   delay: 5
 
 - name: get status of transform secrets engine
-  ansible.builtin.uri:
+  uri:
     url: "http://127.0.0.1:{{ vault_port }}/v1/sys/mounts"
     method: GET
     headers:
@@ -24,7 +24,7 @@
   register: vault_status_transform
 
 - name: enable transform secrets engine
-  ansible.builtin.uri:
+  uri:
     url: "http://127.0.0.1:{{ vault_port }}/v1/sys/mounts/transform"
     method: POST
     headers:
@@ -39,7 +39,7 @@
     - "'transform/' not in vault_status_transform.json.data"
 
 - name: create transform secrets engine role
-  ansible.builtin.uri:
+  uri:
     url: "http://127.0.0.1:{{ vault_port }}/v1/transform/role/encryption"
     method: POST
     headers:
@@ -51,7 +51,7 @@
       - 204
 
 - name: create transformation creditcardnumber
-  ansible.builtin.uri:
+  uri:
     url: "http://127.0.0.1:{{ vault_port }}/v1/transform/transformation/fpe/creditcardnumber"
     method: POST
     headers:
@@ -63,7 +63,7 @@
       - 204
 
 - name: create transformation socialsecuritynumber
-  ansible.builtin.uri:
+  uri:
     url: "http://127.0.0.1:{{ vault_port }}/v1/transform/transformation/fpe/socialsecuritynumber"
     method: POST
     headers:
@@ -75,7 +75,7 @@
       - 204
 
 - name: create transformation driverslicense
-  ansible.builtin.uri:
+  uri:
     url: "http://127.0.0.1:{{ vault_port }}/v1/transform/transformation/fpe/driverslicense"
     method: POST
     headers:
@@ -87,7 +87,7 @@
       - 204
 
 - name: create driverslicense template
-  ansible.builtin.uri:
+  uri:
     url: "http://127.0.0.1:{{ vault_port }}/transform/template/driverslicense-template"
     method: POST
     headers:
