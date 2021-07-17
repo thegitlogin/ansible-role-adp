@@ -2,7 +2,7 @@
 
 - name: save root token variable
   set_fact:
-    root_token: "s.HaIMw1DzIieknCprrQcqHCam"
+    root_token: "s.VtvrcZ10Q0eaqun5D92v5Wf6"
 
 - name: Vault heath check
   uri:
